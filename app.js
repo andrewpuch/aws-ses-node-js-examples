@@ -10,8 +10,8 @@ aws.config.loadFromPath(__dirname + '/config.json');
 // Instantiate SES.
 var ses = new aws.SES();
 
-app.get('/ListVerifiedEmailAddresses', function (req, res) {
-    res.send(ses.listVerifiedEmailAddresses());
+app.get('/ListIdentities', function (req, res) {
+    res.send(ses.list-identities());
 });
 
 app.get('/SendRawEmail', function (req, res) {
