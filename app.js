@@ -10,6 +10,23 @@ aws.config.loadFromPath(__dirname + '/config.json');
 // Instantiate SES.
 var ses = new aws.SES();
 
+// Verify email addresses.
+app.get('/verifyEmailAddress', function (req, res) {
+    var params = {
+        EmailAddress: email
+    };
+    
+    ses.verifyEmailAddress(params, function(err, data) {
+        if (err) {
+            res.send(err);
+        } 
+        else {
+            res.send(data);
+        } 
+    });
+});
+
+// Listing the verified email addresses.
 app.get('/listVerifiedEmailAddresses', function (req, res) {
     ses.listVerifiedEmailAddresses(function(err, data) {
         if (err) {
@@ -21,6 +38,23 @@ app.get('/listVerifiedEmailAddresses', function (req, res) {
     });
 });
 
+// Deleting verified email addresses.
+app.get('/deleteVerifiedEmailAddress', function (req, res) {
+    var params = {
+        EmailAddress: email
+    };
+
+    ses.deleteVerifiedEmailAddress(params, function(err, data) {
+        if (err) {
+            res.send(err);
+        } 
+        else {
+            res.send(data);
+        } 
+    });
+});
+
+// Sending RAW email including an attachment.
 app.get('/SendRawEmail', function (req, res) {
     var ses_mail = "From: 'AWS Tutorial Series' <" + email + ">\n";
     ses_mail = ses_mail + "To: " + email + "\n";
