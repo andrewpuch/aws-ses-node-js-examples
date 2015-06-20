@@ -10,7 +10,11 @@ aws.config.loadFromPath(__dirname + '/config.json');
 // Instantiate SES.
 var ses = new aws.SES();
 
-app.get('/send_attachment', function (req, res) {
+app.get('/ListVerifiedEmailAddresses', function (req, res) {
+    res.send(ses.listVerifiedEmailAddresses());
+});
+
+app.get('/SendRawEmail', function (req, res) {
     var ses_mail = "From: 'AWS Tutorial Series' <" + email + ">\n";
     ses_mail = ses_mail + "To: " + email + "\n";
     ses_mail = ses_mail + "Subject: AWS SES Attachment Example\n";
