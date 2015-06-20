@@ -13,6 +13,7 @@ ln -s /usr/bin/nodejs /usr/bin/node
 git clone https://github.com/andrewpuch/aws-ses-node-js-examples.git
 cd aws-ses-node-js-examples
 npm install
+cp config-sample.json config.json
 ```
 
 ***NOTE: Here you will want to edit config.json with your AWS keys and in app.js you will want to edit the email address with your own email address. For this tutorial we will just send email to ourselves.***
