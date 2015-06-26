@@ -19,7 +19,7 @@ app.get('/verify', function (req, res) {
     };
     
     ses.verifyEmailAddress(params, function(err, data) {
-        if (err) {
+        if(err) {
             res.send(err);
         } 
         else {
@@ -31,7 +31,7 @@ app.get('/verify', function (req, res) {
 // Listing the verified email addresses.
 app.get('/list', function (req, res) {
     ses.listVerifiedEmailAddresses(function(err, data) {
-        if (err) {
+        if(err) {
             res.send(err);
         } 
         else {
@@ -47,7 +47,7 @@ app.get('/delete', function (req, res) {
     };
 
     ses.deleteVerifiedEmailAddress(params, function(err, data) {
-        if (err) {
+        if(err) {
             res.send(err);
         } 
         else {
@@ -79,7 +79,7 @@ app.get('/send', function (req, res) {
     };
     
     ses.sendRawEmail(params, function(err, data) {
-        if (err) {
+        if(err) {
             res.send(err);
         } 
         else {
@@ -90,9 +90,8 @@ app.get('/send', function (req, res) {
 
 // Start server.
 var server = app.listen(80, function () {
+    var host = server.address().address;
+    var port = server.address().port;
 
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('AWS SES example app listening at http://%s:%s', host, port);
+    console.log('AWS SES example app listening at http://%s:%s', host, port);
 });
