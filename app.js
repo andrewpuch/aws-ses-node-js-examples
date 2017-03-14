@@ -70,7 +70,7 @@ app.get('/send', function (req, res) {
     ses_mail = ses_mail + "Content-Type: text/plain;\n";
     ses_mail = ses_mail + "Content-Disposition: attachment; filename=\"attachment.txt\"\n\n";
     ses_mail = ses_mail + "AWS Tutorial Series - Really cool file attachment!" + "\n\n";
-    ses_mail = ses_mail + "--NextPart";
+    ses_mail = ses_mail + "--NextPart--";
     
     var params = {
         RawMessage: { Data: new Buffer(ses_mail) },
